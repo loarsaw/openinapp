@@ -2,7 +2,7 @@ import useDeviceDetection from "@/hooks/useDevice";
 import { IconBell, IconMenu2, IconUser, IconX } from "@tabler/icons-react";
 import React, { useState } from "react";
 import Navbar from "../navbar";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Login from "../login";
 
 interface LayoutProps {
@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <IconBell />
                 </div>
                 <div className="p-3 rounded-full  flex items-center justify-center">
-                  <IconUser />
+                  <IconUser onClick={() => signOut()} />
                 </div>
               </div>
             </div>

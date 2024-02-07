@@ -9,12 +9,16 @@ import {
   IconBrandX,
   IconBrandXFilled,
 } from "@tabler/icons-react";
+
 import { signIn } from "next-auth/react";
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {};
 
 const Login = (props: Props) => {
+  const [email, setEmail] = useState("klakdskla@gmail.com");
+  const [password, setPassword] = useState("329230490");
+
   return (
     <div>
       <div className="h-screen md:flex">
@@ -38,10 +42,10 @@ const Login = (props: Props) => {
           </div>
         </div>
         <div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
-          <form className="">
+          <div>
             <h1 className="text-gray-800 font-bold text-2xl mb-1">Sign In</h1>
             <p className="text-sm font-normal text-gray-600 mb-7">
-              Sign Into your account
+              Click on Google to Sign In
             </p>
             <div className="w-full flex flex-row space-x-2 mb-5">
               <div
@@ -81,6 +85,9 @@ const Login = (props: Props) => {
                 />
               </svg>
               <input
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="pl-2 outline-none border-none"
                 type="text"
                 name=""
@@ -102,15 +109,18 @@ const Login = (props: Props) => {
                 />
               </svg>
               <input
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="pl-2 outline-none border-none"
-                type="text"
+                type="password"
                 name=""
                 id=""
                 placeholder="Password"
               />
             </div>
             <button
-              type="submit"
+              onClick={() => signIn("google")}
               className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
             >
               Login
@@ -118,7 +128,7 @@ const Login = (props: Props) => {
             <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
               Forgot Password ?
             </span>
-          </form>
+          </div>
         </div>
       </div>
     </div>
