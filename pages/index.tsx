@@ -53,8 +53,6 @@ export default function Home() {
     });
   };
 
- 
-
   const acceptableCSVFileTypes =
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .csv";
   return (
@@ -145,9 +143,13 @@ export default function Home() {
                               </td>
                               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                 <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                  {row.select_tags.map((tag: string) => (
-                                    <option value="tag">{tag}</option>
-                                  ))}
+                                  {row.select_tags.map(
+                                    (tag: string, idx: number) => (
+                                      <option key={idx} value="tag">
+                                        {tag}
+                                      </option>
+                                    )
+                                  )}
                                 </select>
                               </td>
                               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
